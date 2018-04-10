@@ -4,6 +4,12 @@ class  AddProject extends Component {
   static defaultProps = {
     categories: ['web', 'dev', 'mobile']
   }
+
+  handleSubmit(e){
+    console.log('Submitted')
+    e.preventDefault()
+  }
+
   render() {
     let catOptions = this.props.categories.map(category => {
       return <option key={category} value="category">{category}</option>
@@ -11,9 +17,9 @@ class  AddProject extends Component {
     return (
       <div>
         Add
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div>
-            <label for="Title"></label>
+            <label>title</label>
             <input type="text" ref="title" />
           </div>
           <div>
@@ -22,6 +28,7 @@ class  AddProject extends Component {
               {catOptions}
             </select>
           </div>
+          <input type="submit" value="Submit" />
         </form>
       </div>
     );
